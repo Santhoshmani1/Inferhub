@@ -1,4 +1,4 @@
-import Header from "../components/header"
+import Header from "../components/Header"
 import Icon from "../assets/icon.png"
 
 const NotFound = () => {

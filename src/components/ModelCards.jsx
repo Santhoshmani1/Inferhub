@@ -58,8 +58,8 @@ const ModelCards = () => {
                 <span className="font-light">Powered by : </span>
                 {poweredBy}
               </div>
-             <img src={image} alt={modelName} className="p-2 rounded-2xl" />
-              <div className="text-slate-300 text-lg  leading-normal">{description}</div>
+             <img src={image} alt={modelName} className="p-4 rounded-2xl" />
+              <div className="text-slate-300 text-lg leading-relaxed p-2">{description}</div>
               <Link
                 to={navigationPath}
                 className="flex justify-start flex-row-reverse items-center py-2"

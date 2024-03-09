@@ -40,7 +40,7 @@ const Header = () => {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <img src={Icon} alt="Inferhub" className="w-10 h-10" />
-            <h1 className="self-center px-2 text-2xl lg:text-3xl font-semibold text-white">
+            <h1 className="self-center px-2 text-3xl lg:text-3xl font-semibold text-white">
               InferHub
             </h1>
           </Link>

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import Header from "../components/Header.jsx";
 import generateImage from "../helpers/generateImage.js";
 
-// Importing images for the examples carousel. 
 import alienImg from "../assets/alien.png";
 import astronautImg from "../assets/astronaut.png";
 import astronautWithUnicorn from "../assets/astronautwithunicorn.webp";
@@ -11,14 +10,36 @@ import panda from "../assets/panda.webp"
 import dog from "../assets/dog.webp"
 import futuristicCity from "../assets/futuristicCity.png"
 
+
 const sdxlImages = [alienImg, astronautImg, astronautWithUnicorn, tiger, panda, dog, futuristicCity];
 
-const TextToImage = () => {
 
+const imagePrompts = [
+  "A beautiful sunset over the ocean",
+  "A futuristic city in mars",
+  "A magical forest in the night",
+  "A dragon flying over a mountain",
+  "A peaceful village in the mountains",
+  "A space station on moon",
+  "A medieval castle of tom and jerry",
+  "A cyberpunk city of pokemons",
+  "A futuristic landscape of India",
+]
+
+const TextToImage = () => {
   const [prompt, setPrompt] = useState("");
   const [promptPlaceholder, setPromptPlaceholder] = useState("Enter a prompt");
   const [images, setImages] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // The prompt placeholder is a random prompt from the imagePrompts array.
+  // Changes the prompt placeholder every 5 seconds.
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setPromptPlaceholder(promptPlaceholder => imagePrompts[Math.floor(Math.random() * imagePrompts.length)]);
+    }, 3000);
+    return () => clearInterval(intervalId);
+  }, []);
 
 
   // Useffect to change the sdxl images from the array.
@@ -43,9 +64,21 @@ const TextToImage = () => {
       <Header />
       <div className="pt-10"></div>
 
-      <div className="pt-10 bg-gray-950 min-h-screen">
+      <div className="pt-10 bg-gray-950 min-h-screen" style={{fontFamily:"Montserrat,Ariel"}}>
         <h2 className="text-2xl text-center font-bold leading-relaxed text-white">Text to Image</h2>
 
+        <div className="prompts-scoller grid grid-cols-3 grid-rows-3 lg:w-3/4 mx-auto p-2">
+          {imagePrompts.map((prompt, index) => {
+            return (
+              <button key={index} className="text-white p-2 mx-2 my-4 sm:text-lg text-center border-2 border-blue-500  rounded-xl hover:border-yellow-300 hover:cursor-pointer hover:bg-gray-800  md:w-4/5 md:mx-auto text-sm " onClick={(e) => {
+                setPromptPlaceholder(e.target.textContent);
+                setPrompt(e.target.textContent);
+              }}>
+                {prompt}
+              </button>
+            )
+          })}
+        </div>
         <div className="text2image-container">
           <input
             type="text"
@@ -61,13 +94,13 @@ const TextToImage = () => {
           <button
             type="button"
             onClick={handleGenerateImage}
-            className="text-slate-100 text-xl border-blue-400 rounded-lg border-2 px-4 py-2 m-auto bg-gray-900 hover:bg-black hover:border-yellow-500 hover:text-white select-none mx-auto block"
+            className="text-slate-100 text-xl font-bold border-blue-400 rounded-lg border-2 px-4 py-2 m-auto bg-gray-900 hover:bg-black hover:border-yellow-500 hover:text-white select-none mx-auto block"
           >
             Generate Image
           </button>
         </div>
 
-        <h2 className="text-lg pt-8 m-4 font-bold text-white text-center">My Images</h2>
+        <h2 className="text-2xl pt-8 m-4 font-bold text-white text-center">My Images</h2>
         <div className="flex justify-evenly items-center flex-wrap">
 
           {images.map((image, index) => {
@@ -85,7 +118,7 @@ const TextToImage = () => {
 
         </div>
         <div>
-          <h3 className="text-xl pt-12 font-bold text-white text-center ">Generated with stable diffusion SDXL </h3>
+          <h3 className="pt-12 font-bold text-white text-center text-2xl">Generated with stable diffusion SDXL </h3>
         </div>
         <div className="flex justify-center items-center lg:w-3/4 m-auto w-screen flex-wrap animate-pulse">
           <img src={sdxlImages[currentImageIndex]} alt="carousel" width={"300px"} height={"300px"} className="m-auto p-4 rounded-xl" />

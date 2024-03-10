@@ -40,7 +40,7 @@ const Header = () => {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <img src={Icon} alt="Inferhub" className="w-10 h-10" />
-            <h1 className="self-center px-2 text-2xl lg:text-3xl font-semibold text-white">
+            <h1 className="self-center px-2 text-3xl lg:text-3xl font-semibold text-white hover:text-blue-500">
               InferHub
             </h1>
           </Link>
@@ -48,7 +48,7 @@ const Header = () => {
             onClick={toggleNavbar}
             data-collapse-toggle="navbar-solid-bg"
             type="button"
-            className="inline-flex items-center p-1 text-white border-white w-10 h-10 justify-center text-sm hover:border rounded-lg md:hidden"
+            className="inline-flex items-center p-1 text-white hover:text-blue-500 border-white w-10 h-10 justify-center text-sm hover:border rounded-lg md:hidden"
             aria-controls="navbar-solid-bg"
             aria-expanded="false"
           >
@@ -61,7 +61,7 @@ const Header = () => {
             <ul className="flex flex-col font-normal mt-4 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
               {navigationItems.map((navItem) => {
                 return (
-                  <Link key={navItem.id} to={navItem.path} className="text-slate-200 text-xl text-center p-1 hover:underline hover:to-gray-600">{navItem.label}</Link>
+                  <Link key={navItem.id} to={navItem.path} className="text-slate-200 text-xl text-center p-1 hover:underline hover:text-blue-400">{navItem.label}</Link>
                 )
               })}
             </ul>

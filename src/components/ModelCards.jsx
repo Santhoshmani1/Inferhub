@@ -32,6 +32,7 @@ const models = [
 const ModelCards = () => {
   return (
     <div id="models-card-wrapper">
+      <h2 className="text-2xl text-center leading-relaxed p-2 text-white font-bold">Models on Inferhub</h2>
       {models.map((model) => {
         const {
           title,
@@ -51,20 +52,20 @@ const ModelCards = () => {
                 {title}
               </h3>
               <div className="model-name text-lg leading-normal text-white">
-                <span className="font-light">Model name : </span>
+                <span className="font-light">Model : </span>
                 {modelName}
               </div>
               <div className="text-slate-50 text-lg">
                 <span className="font-light">Powered by : </span>
                 {poweredBy}
               </div>
-             <img src={image} alt={modelName} className="p-2 rounded-2xl" />
-              <div className="text-slate-300 text-lg  leading-normal">{description}</div>
+             <img src={image} alt={modelName} className="p-4 rounded-2xl mx-auto" height={"400"}  width={"400"} />
+              <div className="text-slate-300 text-sm md:text-lg leading-relaxed p-2 mx-auto">{description}</div>
               <Link
                 to={navigationPath}
                 className="flex justify-start flex-row-reverse items-center py-2"
               >
-               <button className="text-slate-100  text-xl border-blue-400 hover:border-white rounded-lg border-2 px-4 py-2 w-1/2  m-auto bg-blue-500 hover:bg-blue-600 hover:text-white">
+               <button className="text-slate-100  text-xl border-blue-400 hover:border-white rounded-lg border-2 px-4 py-2 w-1/2  m-auto bg-blue-500 hover:bg-blue-600 hover:text-white font-bold">
                 Try it out
                </button>
               </Link>

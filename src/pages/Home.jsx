@@ -5,13 +5,13 @@ import { FaGithub, FaReact } from "react-icons/fa"
 
 const Home = () => {
   return (
-    <>
+    <div style={{fontFamily:"Montserrat,Ariel"}}>
       <Header />
 
       <div className="pt-12"></div>
 
       <div className="home-hero pt-5 m-auto bg-gray-950 text-white">
-        <h2 className="text-2xl leading-relaxed md:text-3xl lg:text-4xl w-4/5 mx-auto py-10">
+        <h2 className="text-xl leading-relaxed md:text-3xl lg:text-4xl w-4/5 mx-auto py-10 text-center">
           Welcome to the{" "}
           <span className="text-blue-400 lg:text-5xl md:text-4xl sm:text-3xl text-2xl">
             InferHub
@@ -39,7 +39,7 @@ const Home = () => {
           <p><a href="https://github.com/santhoshmani1/inferhub" target="_blank" rel="noreferrer" className="hover:underline  hover:text-gray-300 leading-loose text-xl">Support on Github <FaGithub className=" mx-2 my-1 text-white" style={{ display: "inline" }} /></a></p>
         </div>
       </footer>
-    </>
+    </div>
   );
 };
 
